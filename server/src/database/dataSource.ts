@@ -8,7 +8,8 @@ export const AppDataSource = new DataSource({
 	username: "postgres",
 	password: "postgres",
 	database: "postgres",
+	synchronize: false,
 	logging: true,
 	entities: [Recipe],
-	migrations: ["./src/database/migrations/*.js"],
+	migrations: ["./src/database/migrations/*.ts"],
 });

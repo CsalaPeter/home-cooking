@@ -3,6 +3,7 @@ import {
 	Column,
 	PrimaryGeneratedColumn,
 	CreateDateColumn,
+	UpdateDateColumn,
 } from "typeorm";
 
 @Entity("recipe")
@@ -10,18 +11,18 @@ export class Recipe {
 	@PrimaryGeneratedColumn()
 	id!: number;
 
-	@Column()
+	@Column("varchar")
 	name!: string;
 
-	@Column()
-	ingredients!: string;
+	@Column("varchar", { array: true })
+	ingredients!: string[];
 
-	@Column()
+	@Column("varchar")
 	instructions!: string;
 
 	@CreateDateColumn({ name: "created_at" })
 	created_at!: Date;
 
-	@CreateDateColumn({ name: "updated_at" })
+	@UpdateDateColumn({ name: "updated_at" })
 	updated_at!: Date;
 }
