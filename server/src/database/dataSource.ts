@@ -11,5 +11,5 @@ export const AppDataSource = new DataSource({
 	synchronize: false,
 	logging: true,
 	entities: [Recipe],
-	migrations: ["./src/database/migrations/*.ts"],
+	migrations: ["./src/database/migrations/*.js"],
 });
