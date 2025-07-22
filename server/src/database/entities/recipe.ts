@@ -14,6 +14,9 @@ export class Recipe {
 	@Column("varchar")
 	name!: string;
 
+	@Column("varchar")
+	image!: string;
+
 	@Column("varchar", { array: true })
 	ingredients!: string[];
 
