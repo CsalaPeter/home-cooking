@@ -9,13 +9,13 @@ const imgUrl = new URL(`../assets/images/${recipe.image}`, import.meta.url).href
 </script>
 
 <template>
-	<div class="recipe-card">
+	<a class="recipe-card" :href="`/recipe/${recipe.id}`">
 		<div class="recipe-card__img-wrapper">
 			<img :src="imgUrl" />
 		</div>
 		<h3 class="recipe-card__title">{{ recipe.name }}</h3>
 		<p class="recipe-card__description">{{ recipe.description }}</p>
-	</div>
+	</a>
 </template>
 
 <style>

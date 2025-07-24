@@ -4,7 +4,5 @@ export interface Recipe {
 	image: string
 	description: string
 	ingredients: string[]
-	instructions: string
-	created_at: Date
-	updated_at: Date
+	instructions: string[]
 }

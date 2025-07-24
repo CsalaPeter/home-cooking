@@ -23,12 +23,12 @@ export class Recipe {
 	@Column("varchar", { array: true })
 	ingredients!: string[];
 
-	@Column("varchar")
-	instructions!: string;
+	@Column("varchar", { array: true })
+	instructions!: string[];
 
-	@CreateDateColumn({ name: "created_at" })
+	@CreateDateColumn({ name: "created_at", select: false })
 	created_at!: Date;
 
-	@UpdateDateColumn({ name: "updated_at" })
+	@UpdateDateColumn({ name: "updated_at", select: false })
 	updated_at!: Date;
 }
