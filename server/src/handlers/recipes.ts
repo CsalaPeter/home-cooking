@@ -19,3 +19,16 @@ export async function getRecipe(request: Request, response: Response) {
 
 	response.status(200).json(recipe);
 }
+
+export async function searchRecipe(request: Request, response: Response) {
+	const searchWord = request.query.query as string;
+	const recipeNames = await AppDataSource.getRepository(Recipe)
+		.createQueryBuilder("recipe")
+		.select(["recipe.id", "recipe.name"])
+		.where("recipe.name ILIKE :searchWord", {
+			searchWord: `%${searchWord}%`,
+		})
+		.getMany();
+
+	response.status(200).json(recipeNames);
+}

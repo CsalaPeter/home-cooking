@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import type { Recipe } from '@/types/Recipe'
 import RecipeCard from '@/components/RecipeCard.vue'
+import SearchBar from '@/components/SearchBar.vue'
 
 const recipes = ref<Recipe[]>([])
 
@@ -25,6 +26,7 @@ async function getRecipes() {
 <template>
 	<main>
 		<h1>Welcome to Home Cooking</h1>
+		<SearchBar />
 		<section>
 			<div class="recipeCards">
 				<RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />

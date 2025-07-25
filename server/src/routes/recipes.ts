@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { getRecipes, getRecipe } from "../handlers/recipes.js";
+import { searchRecipe, getRecipe, getRecipes } from "../handlers/recipes.js";
 
 const recipeRoutes = Router();
 
-recipeRoutes.get("/", getRecipes);
+recipeRoutes.get("/search", searchRecipe);
 recipeRoutes.get("/:id", getRecipe);
+recipeRoutes.get("/", getRecipes);
 
 export default recipeRoutes;

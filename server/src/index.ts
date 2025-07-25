@@ -13,7 +13,6 @@ AppDataSource.initialize()
 		});
 
 		app.use("/api/recipes", recipeRoutes);
-		app.use("/api/recipes/:id", recipeRoutes);
 	})
 	.catch((error) => {
 		console.log("Error during Data Source initialization", error);
