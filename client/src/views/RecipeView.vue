@@ -19,7 +19,7 @@ onMounted(() => {
 
 async function getRecipe() {
 	try {
-		const response = await axios.get<Recipe>(`http://localhost:3000/api/recipes/${props.id}`)
+		const response = await axios.get<Recipe>(`/api/recipes/${props.id}`)
 		console.log('response status is:', response.status)
 		recipe.value = response.data
 	} catch (error) {
@@ -34,7 +34,7 @@ async function getRecipe() {
 		<section class="recipe">
 			<h1 class="recipe__title">{{ recipe.name }}</h1>
 			<div class="recipe__head">
-				<img :src="`http://localhost:5173/src/assets/images/${recipe.image}`" alt="" />
+				<img :src="`/images/${recipe.image}`" alt="" />
 				<h4>{{ recipe.description }}</h4>
 			</div>
 			<div class="recipe__body">

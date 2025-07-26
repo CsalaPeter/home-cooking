@@ -5,13 +5,12 @@ import type { Recipe } from '@/types/Recipe'
 const { recipe } = defineProps<{
 	recipe: Recipe
 }>()
-const imgUrl = new URL(`../assets/images/${recipe.image}`, import.meta.url).href
 </script>
 
 <template>
 	<a class="recipe-card" :href="`/recipe/${recipe.id}`">
 		<div class="recipe-card__img-wrapper">
-			<img :src="imgUrl" />
+			<img :src="`/images/${recipe.image}`" />
 		</div>
 		<h3 class="recipe-card__title">{{ recipe.name }}</h3>
 		<p class="recipe-card__description">{{ recipe.description }}</p>

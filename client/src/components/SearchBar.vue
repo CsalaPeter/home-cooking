@@ -7,7 +7,7 @@ const searchResults = ref([])
 
 async function searchRecipes() {
 	try {
-		const response = await axios.get(`http://localhost:3000/api/recipes/search`, {
+		const response = await axios.get(`/api/recipes/search`, {
 			params: {
 				query: searchQuery.value,
 			},

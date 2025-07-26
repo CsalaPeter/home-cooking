@@ -13,7 +13,7 @@ onMounted(() => {
 
 async function getRecipes() {
 	try {
-		const response = await axios.get<Recipe[]>('http://localhost:3000/api/recipes', {})
+		const response = await axios.get<Recipe[]>('/api/recipes', {})
 		console.log('response status is: ', response.status)
 		recipes.value = response.data
 	} catch (error) {
