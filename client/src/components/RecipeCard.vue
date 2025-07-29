@@ -20,20 +20,20 @@ const { recipe } = defineProps<{
 <style>
 .recipe-card {
 	align-items: center;
-	border-radius: 16px;
+	border-radius: var(--m);
+	background-color: var(--white);
 	box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
 	display: flex;
 	flex-direction: column;
-	gap: 24px;
 	justify-content: space-between;
 	overflow: hidden;
-	padding: 16px;
+	padding: var(--m);
 	width: calc(100% / 3);
 
 	& .recipe-card__img-wrapper {
 		display: flex;
 		height: 200px;
-		margin-top: -32px;
+		margin-block: -32px var(--l);
 		width: calc(100% + 32px);
 	}
 

@@ -38,6 +38,6 @@ async function getRecipes() {
 <style>
 .recipeCards {
 	display: flex;
-	gap: 16px;
+	gap: var(--m);
 }
 </style>

@@ -36,21 +36,21 @@ async function searchRecipes() {
 .search-bar {
 	display: flex;
 	justify-content: center;
-	margin: 0 auto 32px;
+	margin: 0 auto var(--l);
 	max-width: 600px;
 	position: relative;
 }
 
 .search-bar__input {
 	border-radius: 20px;
-	border: 2px solid darkblue;
+	border: 3px solid var(--green-300);
 	height: 36px;
 	width: 100%;
 	padding: 0 10px;
 
 	&:focus {
 		outline: none;
-		border: 2px solid royalblue;
+		border: 3px solid var(--green-100);
 	}
 }
 </style>
