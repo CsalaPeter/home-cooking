@@ -57,7 +57,7 @@ async function getRecipe() {
 .recipe {
 	display: flex;
 	flex-direction: column;
-	gap: 32px;
+	gap: var(--l);
 }
 
 .recipe__title {

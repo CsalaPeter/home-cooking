@@ -1,12 +1,28 @@
 @import './base.css';
 
 #app {
-	font-family: Helvetica;
-	font-size: 1rem;
-	font-weight: normal;
 	margin: 0 auto;
 	max-width: 1280px;
-	padding: 2rem;
+}
+
+body {
+	background-color: var(--white);
+	color: var(--text-primary);
+	font-family: Helvetica;
+	font-weight: normal;
+}
+
+.link {
+	color: var(--green-500);
+
+	&:hover {
+		color: var(--green-400);
+		text-decoration: underline;
+	}
+
+	&:visited {
+		color: var(--green-300);
+	}
 }
 
 a {
@@ -15,21 +31,32 @@ a {
 }
 
 h1 {
-	font-size: 3rem;
+	font-size: 48px;
+	margin-block: 0 var(--l);
 	text-align: center;
-	margin-bottom: 8px;
 }
 
 h2 {
-	font-size: 2.6rem;
+	font-size: 42px;
+	margin-block: 0 var(--l);
+	text-align: center;
 }
 
 h3 {
-	font-size: 2.4rem;
+	font-size: 36px;
+	margin-block: 0 var(--m);
+	text-align: center;
 }
 
 h4 {
-	font-size: 2.2rem;
+	font-size: 30px;
+	margin-block: 0 var(--m);
+	text-align: center;
+}
+
+p {
+	font-size: 18px;
+	margin-block: 0 var(--s);
 }
 
 @media (min-width: 1024px) {
