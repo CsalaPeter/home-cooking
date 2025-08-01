@@ -33,7 +33,7 @@ export async function getRecipe(request: Request, response: Response) {
 			return response.status(404).json({ message: "Recipe not found." });
 		}
 
-		const ingredients = await getRecipe.recipeIngredients;
+		const ingredients = getRecipe.recipeIngredients;
 		const formattedRecipe = {
 			id: getRecipe.id,
 			name: getRecipe.name,

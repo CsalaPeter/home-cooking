@@ -25,9 +25,9 @@ export class Recipe {
 	@OneToMany(
 		"RecipeIngredient",
 		(recipeIngredients: RecipeIngredient) => recipeIngredients.recipe,
-		{ cascade: true, lazy: true },
+		{ cascade: true },
 	)
-	recipeIngredients!: Promise<RecipeIngredient[]>;
+	recipeIngredients!: RecipeIngredient[];
 
 	@Column("varchar", { array: true })
 	instructions!: string[];
