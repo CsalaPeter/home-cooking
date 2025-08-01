@@ -9,8 +9,8 @@ const recipe = ref<Recipe>({
 	name: '',
 	image: '',
 	description: '',
-	ingredients: [],
 	instructions: [],
+	ingredients: [],
 })
 
 onMounted(() => {
@@ -39,8 +39,10 @@ async function getRecipe() {
 			</div>
 			<div class="recipe__body">
 				<ul>
-					<li v-for="ingredient in recipe.ingredients" :key="ingredient">
-						{{ ingredient }}
+					<li v-for="ingredient in recipe.ingredients" :key="ingredient.id">
+						{{ ingredient.amount }}
+						{{ ingredient.measurement }} of
+						{{ ingredient.name }}
 					</li>
 				</ul>
 				<ol>
