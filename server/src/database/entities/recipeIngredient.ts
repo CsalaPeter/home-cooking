@@ -14,7 +14,7 @@ export class RecipeIngredient {
 	@PrimaryGeneratedColumn()
 	id!: number;
 
-	@Column()
+	@Column("smallint")
 	amount!: number;
 
 	@ManyToOne("Recipe", (recipe: Recipe) => recipe.recipeIngredients, {

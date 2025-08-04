@@ -9,6 +9,9 @@ export class Measurement {
 	@Column({ type: "character varying", unique: true })
 	unit!: string;
 
+	@Column({ type: "smallint", nullable: true })
+	value!: number;
+
 	@OneToMany(
 		"RecipeIngredient",
 		(recipeIngredients: RecipeIngredient) => recipeIngredients.measurement,

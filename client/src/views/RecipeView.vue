@@ -8,6 +8,7 @@ const recipe = ref<Recipe>({
 	id: 0,
 	name: '',
 	image: '',
+	tags: [],
 	description: '',
 	instructions: [],
 	ingredients: [],

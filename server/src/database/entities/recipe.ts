@@ -19,6 +19,9 @@ export class Recipe {
 	@Column("varchar")
 	image!: string;
 
+	@Column("varchar", { array: true })
+	tags!: string[];
+
 	@Column("varchar")
 	description!: string;
 
