@@ -9,19 +9,19 @@ export class Ingredient {
 	@Column({ type: "character varying", unique: true })
 	name!: string;
 
-	@Column("smallint")
+	@Column("smallint") // In 100 grams
 	calories!: number;
 
-	@Column("smallint")
+	@Column({ type: "decimal", precision: 4, scale: 1 }) // In 100 grams
 	fat!: number;
 
-	@Column("smallint")
+	@Column({ type: "decimal", precision: 4, scale: 1 }) // In 100 grams
 	carbs!: number;
 
-	@Column("smallint")
+	@Column({ type: "decimal", precision: 4, scale: 1 }) // In 100 grams
 	protein!: number;
 
-	@Column("smallint")
+	@Column({ type: "decimal", precision: 4, scale: 1 }) // In 100 grams
 	fiber!: number;
 
 	@OneToMany(

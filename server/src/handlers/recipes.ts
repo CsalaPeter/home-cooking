@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { AppDataSource } from "../database/dataSource.js";
 import { Recipe } from "../database/entities/recipe.js";
 import { RecipeIngredient } from "src/database/entities/recipeIngredient.js";
-import { error } from "console";
 
 export async function getRecipes(request: Request, response: Response) {
 	try {
@@ -21,7 +20,7 @@ export async function getRecipe(request: Request, response: Response) {
 	try {
 		const recipeId = request.params.id;
 
-		const getRecipe = await AppDataSource.getRepository(Recipe)
+		const recipe = await AppDataSource.getRepository(Recipe)
 			.createQueryBuilder("recipe")
 			.leftJoinAndSelect("recipe.recipeIngredients", "recipeIngredient")
 			.leftJoinAndSelect("recipeIngredient.ingredient", "ingredient")
@@ -29,23 +28,38 @@ export async function getRecipe(request: Request, response: Response) {
 			.where("recipe.id = :id", { id: recipeId })
 			.getOne();
 
-		if (!getRecipe) {
+		if (!recipe) {
 			return response.status(404).json({ message: "Recipe not found." });
 		}
 
-		const ingredients = getRecipe.recipeIngredients;
+		const totalCalories = recipe.recipeIngredients.reduce(
+			(sum, recipeIngredient) => {
+				const ingredientCalories = recipeIngredient.ingredient.calories;
+				const ingredientQuantity =
+					recipeIngredient.measurement.value != 0
+						? recipeIngredient.amount *
+							recipeIngredient.measurement.value
+						: recipeIngredient.amount;
+				return sum + ingredientCalories * (ingredientQuantity / 100);
+			},
+			0,
+		);
+
 		const formattedRecipe = {
-			id: getRecipe.id,
-			name: getRecipe.name,
-			image: getRecipe.image,
-			description: getRecipe.description,
-			instructions: getRecipe.instructions,
-			ingredients: ingredients.map((ingredient: RecipeIngredient) => ({
-				id: ingredient.id,
-				amount: ingredient.amount,
-				name: ingredient.ingredient.name,
-				measurement: ingredient.measurement.unit,
-			})),
+			id: recipe.id,
+			name: recipe.name,
+			image: recipe.image,
+			description: recipe.description,
+			instructions: recipe.instructions,
+			ingredients: recipe.recipeIngredients.map(
+				(ingredient: RecipeIngredient) => ({
+					id: ingredient.id,
+					amount: ingredient.amount,
+					name: ingredient.ingredient.name,
+					measurement: ingredient.measurement.unit,
+				}),
+			),
+			calories: totalCalories,
 		};
 		response.status(200).json(formattedRecipe);
 	} catch (error) {
