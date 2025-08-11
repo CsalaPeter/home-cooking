@@ -4,7 +4,9 @@ import {
 	PrimaryGeneratedColumn,
 	CreateDateColumn,
 	UpdateDateColumn,
+	OneToMany,
 } from "typeorm";
+import { RecipeIngredient } from "./recipeIngredient.js";
 
 @Entity("recipe")
 export class Recipe {
@@ -17,11 +19,18 @@ export class Recipe {
 	@Column("varchar")
 	image!: string;
 
+	@Column("varchar", { array: true })
+	tags!: string[];
+
 	@Column("varchar")
 	description!: string;
 
-	@Column("varchar", { array: true })
-	ingredients!: string[];
+	@OneToMany(
+		"RecipeIngredient",
+		(recipeIngredients: RecipeIngredient) => recipeIngredients.recipe,
+		{ cascade: true },
+	)
+	recipeIngredients!: RecipeIngredient[];
 
 	@Column("varchar", { array: true })
 	instructions!: string[];

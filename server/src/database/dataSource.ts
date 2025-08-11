@@ -1,5 +1,9 @@
+import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Recipe } from "./entities/recipe.js";
+import { Ingredient } from "./entities/ingredient.js";
+import { Measurement } from "./entities/measurement.js";
+import { RecipeIngredient } from "./entities/recipeIngredient.js";
 
 export const AppDataSource = new DataSource({
 	type: "postgres",
@@ -10,6 +14,6 @@ export const AppDataSource = new DataSource({
 	database: "postgres",
 	synchronize: false,
 	logging: true,
-	entities: [Recipe],
-	migrations: ["./src/database/migrations/*.js"],
+	entities: [Recipe, Ingredient, Measurement, RecipeIngredient],
+	migrations: ["./src/database/migrations/*.ts"],
 });
