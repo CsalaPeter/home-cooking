@@ -27,8 +27,8 @@ async function getRecipes() {
 	<main>
 		<h1>Welcome to Home Cooking</h1>
 		<SearchBar />
-		<section>
-			<div class="recipeCards">
+		<section class="recipes">
+			<div class="recipe-cards">
 				<RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
 			</div>
 		</section>
@@ -36,8 +36,14 @@ async function getRecipes() {
 </template>
 
 <style>
-.recipeCards {
+.recipes {
+	width: 100%;
+}
+.recipe-cards {
+	align-items: center;
 	display: flex;
+	flex-wrap: wrap;
 	gap: var(--m);
+	width: 100%;
 }
 </style>
