@@ -43,7 +43,7 @@ async function getRecipes() {
 	align-items: center;
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--m);
+	gap: var(--xxl) var(--m);
 	width: 100%;
 }
 </style>

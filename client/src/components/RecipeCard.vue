@@ -12,17 +12,15 @@ const { recipe } = defineProps<{
 		<div class="recipe-card__img-wrapper">
 			<img :src="`/images/${recipe.image}`" />
 		</div>
-		<div class="recipe-card__content">
-			<h4 class="recipe-card__content__title">{{ recipe.name }}</h4>
-			<div class="recipe-card__content__tags">
-				<span
-					class="recipe-card__content__tags__tag"
-					v-for="(tag, index) in recipe.tags"
-					:key="index"
-					>{{ tag }}</span
-				>
-			</div>
+		<div class="recipe-card__tags">
+			<span class="recipe-card__tags__tag" v-for="(tag, index) in recipe.tags" :key="index">
+				<svg class="recipe-card__tags__tag__icon" viewBox="0 0 24 24" height="18px">
+					<use href="../assets/main.svg#mitt" />
+				</svg>
+				<p class="recipe-card__tags__tag__text">{{ tag }}</p></span
+			>
 		</div>
+		<h4 class="recipe-card__title">{{ recipe.name }}</h4>
 	</a>
 </template>
 
@@ -35,14 +33,14 @@ const { recipe } = defineProps<{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	overflow: hidden;
+	position: relative;
 	width: calc((100% / 3) - 24px);
 
 	& .recipe-card__img-wrapper {
 		display: flex;
+		margin-bottom: var(--m);
 		height: 200px;
-		margin-block: -32px var(--l);
-		width: calc(100% + 32px);
+		width: 100%;
 	}
 
 	& img {
@@ -51,28 +49,48 @@ const { recipe } = defineProps<{
 	}
 }
 
-.recipe-card__content {
-	padding: var(--m);
-}
-
-.recipe-card__content__title {
+.recipe-card__title {
 	font-size: 24px;
 	font-weight: bold;
-	text-align: left;
 	width: 100%;
 }
 
-.recipe-card__content__tags {
+.recipe-card__tags {
+	top: var(--m);
+	left: var(--s);
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
 	gap: var(--s);
+	position: absolute;
 }
 
-.recipe-card__content__tags__tag {
+.recipe-card__tags__tag {
+	align-items: center;
 	background-color: var(--green-400);
 	border-radius: 20px;
 	color: var(--text-secondary);
 	display: flex;
-	padding: 6px var(--s) 4px;
+	gap: var(--xs);
+	height: 34px;
+	justify-content: center;
+	width: 34px;
+
+	&:hover {
+		padding: 0 var(--s);
+		width: auto;
+
+		& .recipe-card__tags__tag__text {
+			display: block;
+		}
+	}
+
+	svg {
+		color: var(--text-secondary);
+	}
+}
+
+.recipe-card__tags__tag__text {
+	margin: 0;
+	display: none;
 }
 </style>
