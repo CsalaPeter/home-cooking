@@ -1,4 +1,5 @@
 :root {
+	--xs: 4px;
 	--s: 8px;
 	--m: 16px;
 	--l: 32px;
@@ -16,4 +17,5 @@
 	--green-600: hsl(98, 96%, 11%);
 
 	--text-primary: var(--black);
+	--text-secondary: var(--white);
 }

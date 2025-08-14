@@ -9,32 +9,40 @@ const { recipe } = defineProps<{
 
 <template>
 	<a class="recipe-card" :href="`/recipe/${recipe.id}`">
+		<h4 class="recipe-card__title">{{ recipe.name }}</h4>
 		<div class="recipe-card__img-wrapper">
 			<img :src="`/images/${recipe.image}`" />
 		</div>
-		<h3 class="recipe-card__title">{{ recipe.name }}</h3>
-		<p class="recipe-card__description">{{ recipe.description }}</p>
+		<div class="recipe-card__tags">
+			<a class="recipe-card__tags__tag" v-for="(tag, index) in recipe.tags" :key="index">
+				<svg class="recipe-card__tags__tag__icon" viewBox="0 0 24 24" height="18px">
+					<use href="../assets/main.svg#mitt" />
+				</svg>
+				<p class="recipe-card__tags__tag__text">{{ tag }}</p></a
+			>
+		</div>
 	</a>
 </template>
 
 <style>
 .recipe-card {
-	align-items: center;
+	background-color: var(--green-100);
+	border: 2px solid var(--green-300);
 	border-radius: var(--m);
-	background-color: var(--white);
 	box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	overflow: hidden;
 	padding: var(--m);
-	width: calc(100% / 3);
+	width: calc((100% / 2) - 52px);
 
 	& .recipe-card__img-wrapper {
+		border-radius: var(--m);
 		display: flex;
-		height: 200px;
-		margin-block: -32px var(--l);
-		width: calc(100% + 32px);
+		height: 400px;
+		overflow: hidden;
+		width: 100%;
+		margin-bottom: var(--l);
 	}
 
 	& img {
@@ -44,8 +52,35 @@ const { recipe } = defineProps<{
 }
 
 .recipe-card__title {
+	font-size: 24px;
 	font-weight: bold;
-	text-align: center;
 	width: 100%;
+}
+
+.recipe-card__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--s);
+	height: fit-content;
+	justify-content: center;
+}
+
+.recipe-card__tags__tag {
+	align-items: center;
+	background-color: var(--green-400);
+	border-radius: 20px;
+	color: var(--text-secondary);
+	display: flex;
+	gap: var(--xs);
+	height: 34px;
+	padding: 0 var(--m);
+
+	svg {
+		color: var(--text-secondary);
+	}
+}
+
+.recipe-card__tags__tag__text {
+	margin: 0;
 }
 </style>
