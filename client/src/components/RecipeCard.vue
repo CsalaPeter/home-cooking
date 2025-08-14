@@ -14,11 +14,13 @@ const { recipe } = defineProps<{
 			<img :src="`/images/${recipe.image}`" />
 		</div>
 		<div class="recipe-card__tags">
-			<a class="recipe-card__tags__tag" v-for="(tag, index) in recipe.tags" :key="index">
-				<svg class="recipe-card__tags__tag__icon" viewBox="0 0 24 24" height="18px">
-					<use href="../assets/main.svg#mitt" />
-				</svg>
-				<p class="recipe-card__tags__tag__text">{{ tag }}</p></a
+			<a class="recipe-card__tags__tag" v-for="tag in recipe.tags" :key="tag.id">
+				<div class="recipe-card__tags__tag__icon">
+					<svg>
+						<use :href="`/main.svg#${tag.icon}`" />
+					</svg>
+				</div>
+				<p class="recipe-card__tags__tag__text">{{ tag.name }}</p></a
 			>
 		</div>
 	</a>
@@ -71,16 +73,24 @@ const { recipe } = defineProps<{
 	border-radius: 20px;
 	color: var(--text-secondary);
 	display: flex;
-	gap: var(--xs);
+	gap: var(--s);
 	height: 34px;
 	padding: 0 var(--m);
+}
+
+.recipe-card__tags__tag__icon {
+	height: 24px;
+	width: 24px;
 
 	svg {
 		color: var(--text-secondary);
+		height: 24px;
+		width: 24px;
 	}
 }
 
 .recipe-card__tags__tag__text {
 	margin: 0;
+	height: 18px;
 }
 </style>
