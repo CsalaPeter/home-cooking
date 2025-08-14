@@ -40,10 +40,10 @@ async function getRecipes() {
 	width: 100%;
 }
 .recipe-cards {
-	align-items: center;
+	align-items: strech;
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--xxl) var(--m);
+	gap: var(--l);
 	width: 100%;
 }
 </style>

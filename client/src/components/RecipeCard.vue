@@ -9,38 +9,40 @@ const { recipe } = defineProps<{
 
 <template>
 	<a class="recipe-card" :href="`/recipe/${recipe.id}`">
+		<h4 class="recipe-card__title">{{ recipe.name }}</h4>
 		<div class="recipe-card__img-wrapper">
 			<img :src="`/images/${recipe.image}`" />
 		</div>
 		<div class="recipe-card__tags">
-			<span class="recipe-card__tags__tag" v-for="(tag, index) in recipe.tags" :key="index">
+			<a class="recipe-card__tags__tag" v-for="(tag, index) in recipe.tags" :key="index">
 				<svg class="recipe-card__tags__tag__icon" viewBox="0 0 24 24" height="18px">
 					<use href="../assets/main.svg#mitt" />
 				</svg>
-				<p class="recipe-card__tags__tag__text">{{ tag }}</p></span
+				<p class="recipe-card__tags__tag__text">{{ tag }}</p></a
 			>
 		</div>
-		<h4 class="recipe-card__title">{{ recipe.name }}</h4>
 	</a>
 </template>
 
 <style>
 .recipe-card {
-	background-color: var(--white);
-	border: 2px solid var(--green-200);
+	background-color: var(--green-100);
+	border: 2px solid var(--green-300);
 	border-radius: var(--m);
 	box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	position: relative;
-	width: calc((100% / 3) - 24px);
+	padding: var(--m);
+	width: calc((100% / 2) - 52px);
 
 	& .recipe-card__img-wrapper {
+		border-radius: var(--m);
 		display: flex;
-		margin-bottom: var(--m);
-		height: 200px;
+		height: 400px;
+		overflow: hidden;
 		width: 100%;
+		margin-bottom: var(--l);
 	}
 
 	& img {
@@ -56,12 +58,11 @@ const { recipe } = defineProps<{
 }
 
 .recipe-card__tags {
-	top: var(--m);
-	left: var(--s);
 	display: flex;
-	flex-direction: column;
+	flex-wrap: wrap;
 	gap: var(--s);
-	position: absolute;
+	height: fit-content;
+	justify-content: center;
 }
 
 .recipe-card__tags__tag {
@@ -72,17 +73,7 @@ const { recipe } = defineProps<{
 	display: flex;
 	gap: var(--xs);
 	height: 34px;
-	justify-content: center;
-	width: 34px;
-
-	&:hover {
-		padding: 0 var(--s);
-		width: auto;
-
-		& .recipe-card__tags__tag__text {
-			display: block;
-		}
-	}
+	padding: 0 var(--m);
 
 	svg {
 		color: var(--text-secondary);
@@ -91,6 +82,5 @@ const { recipe } = defineProps<{
 
 .recipe-card__tags__tag__text {
 	margin: 0;
-	display: none;
 }
 </style>
