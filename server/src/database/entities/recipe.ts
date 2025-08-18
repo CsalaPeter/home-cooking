@@ -5,8 +5,11 @@ import {
 	CreateDateColumn,
 	UpdateDateColumn,
 	OneToMany,
+	ManyToMany,
+	JoinTable,
 } from "typeorm";
 import { RecipeIngredient } from "./recipeIngredient.js";
+import { Tag } from "./tags.js";
 
 @Entity("recipe")
 export class Recipe {
@@ -19,8 +22,9 @@ export class Recipe {
 	@Column("varchar")
 	image!: string;
 
-	@Column("varchar", { array: true })
-	tags!: string[];
+	@ManyToMany(() => Tag)
+	@JoinTable()
+	tags!: Tag[];
 
 	@Column("varchar")
 	description!: string;

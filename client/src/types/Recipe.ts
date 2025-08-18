@@ -2,7 +2,11 @@ export interface Recipe {
 	id: number
 	name: string
 	image: string
-	tags: string[]
+	tags: {
+		id: string
+		name: string
+		icon: string
+	}[]
 	description: string
 	instructions: string[]
 	ingredients: {

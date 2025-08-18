@@ -7,6 +7,7 @@ export async function getRecipes(request: Request, response: Response) {
 	try {
 		const allRecipes = await AppDataSource.getRepository(Recipe)
 			.createQueryBuilder("recipe")
+			.leftJoinAndSelect("recipe.tags", "tag")
 			.getMany();
 
 		response.status(200).json(allRecipes);
