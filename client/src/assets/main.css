@@ -1,9 +1,12 @@
 @import './base.css';
 
 #app {
+	width: 100%;
+}
+
+section {
 	margin: 0 auto;
 	max-width: 1280px;
-	width: 100%;
 }
 
 body {
@@ -11,6 +14,7 @@ body {
 	color: var(--text-primary);
 	font-family: Helvetica;
 	font-weight: normal;
+	margin: 0;
 }
 
 .link {

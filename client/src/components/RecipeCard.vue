@@ -28,7 +28,7 @@ const { recipe } = defineProps<{
 
 <style>
 .recipe-card {
-	background-color: var(--green-100);
+	background-color: var(--white);
 	border: 2px solid var(--green-300);
 	border-radius: var(--m);
 	box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
