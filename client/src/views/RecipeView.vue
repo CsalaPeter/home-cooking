@@ -9,7 +9,6 @@ const recipe = ref<Recipe>({
 	name: '',
 	image: '',
 	tags: [],
-	description: '',
 	instructions: [],
 	ingredients: [],
 })
@@ -36,18 +35,25 @@ async function getRecipe() {
 			<h1 class="recipe__title">{{ recipe.name }}</h1>
 			<div class="recipe__head">
 				<img :src="`/images/${recipe.image}`" alt="" />
-				<h4>{{ recipe.description }}</h4>
 			</div>
 			<div class="recipe__body">
-				<ul>
-					<li v-for="ingredient in recipe.ingredients" :key="ingredient.id">
+				<ul class="recipe__body__ingredients">
+					<li
+						class="recipe__body__ingredients__ingredient"
+						v-for="ingredient in recipe.ingredients"
+						:key="ingredient.id"
+					>
 						{{ ingredient.amount }}
-						{{ ingredient.measurement }} of
+						{{ ingredient.measurement }}
 						{{ ingredient.name }}
 					</li>
 				</ul>
-				<ol>
-					<li v-for="step in recipe.instructions" :key="step">
+				<ol class="recipe__body__steps">
+					<li
+						class="recipe__body__steps__step"
+						v-for="step in recipe.instructions"
+						:key="step"
+					>
 						{{ step }}
 					</li>
 				</ol>
@@ -72,28 +78,42 @@ async function getRecipe() {
 	align-items: center;
 	display: flex;
 	gap: 32px;
+	justify-content: center;
 
 	img {
-		width: 30%;
 		border-radius: 20px;
-	}
-
-	h4 {
-		text-align: center;
-		width: 70%;
+		max-height: 800px;
 	}
 }
 
 .recipe__body {
 	display: flex;
 	place-items: center;
+	margin-bottom: var(--xxl);
+}
 
-	ul {
-		width: 30%;
+.recipe__body__ingredients {
+	width: 400px;
+
+	& li:not(:last-child) {
+		margin-bottom: var(--m);
 	}
 
-	ol {
-		width: 70%;
+	& li::marker {
+		color: var(--green-400);
+	}
+}
+
+.recipe__body__steps {
+	width: 600px;
+
+	& li:not(:last-child) {
+		margin-bottom: var(--m);
+	}
+
+	& li::marker {
+		color: var(--green-400);
+		font-weight: bold;
 	}
 }
 </style>

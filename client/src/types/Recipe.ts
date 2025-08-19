@@ -7,7 +7,6 @@ export interface Recipe {
 		name: string
 		icon: string
 	}[]
-	description: string
 	instructions: string[]
 	ingredients: {
 		id: string
