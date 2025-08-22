@@ -37,10 +37,11 @@ async function getRecipes() {
 	width: 100%;
 }
 .recipe-cards {
-	align-items: strech;
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--l);
+	justify-content: center;
+	margin-bottom: var(--xxl);
 	width: 100%;
 }
 </style>
