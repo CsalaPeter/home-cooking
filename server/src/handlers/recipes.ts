@@ -50,7 +50,6 @@ export async function getRecipe(request: Request, response: Response) {
 			id: recipe.id,
 			name: recipe.name,
 			image: recipe.image,
-			description: recipe.description,
 			instructions: recipe.instructions,
 			ingredients: recipe.recipeIngredients.map(
 				(ingredient: RecipeIngredient) => ({

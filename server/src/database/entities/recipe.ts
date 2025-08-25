@@ -26,9 +26,6 @@ export class Recipe {
 	@JoinTable()
 	tags!: Tag[];
 
-	@Column("varchar")
-	description!: string;
-
 	@OneToMany(
 		"RecipeIngredient",
 		(recipeIngredients: RecipeIngredient) => recipeIngredients.recipe,
