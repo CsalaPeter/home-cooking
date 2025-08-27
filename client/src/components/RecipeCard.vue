@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { Recipe } from '@/types/Recipe'
+import type { RecipeShort } from '@/types/Recipe'
 
 // Destructure 'recipe' directly from 'props'
 const { recipe } = defineProps<{
-	recipe: Recipe
+	recipe: RecipeShort
 }>()
 </script>
 
 <template>
 	<a class="recipe-card" :href="`/recipe/${recipe.id}`">
-		<img class="recipe-card__background" :src="`/images/${recipe.image}`" />
+		<img class="recipe-card__background" :src="`/images/${recipe.card_image}`" />
 		<div class="recipe-card__content">
 			<h4 class="recipe-card__content__title">{{ recipe.name }}</h4>
 			<div class="recipe-card__content__tags">

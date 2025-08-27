@@ -1,3 +1,14 @@
+export interface RecipeShort {
+	id: number
+	name: string
+	card_image: string
+	tags: {
+		id: string
+		name: string
+		icon: string
+	}[]
+}
+
 export interface Recipe {
 	id: number
 	name: string

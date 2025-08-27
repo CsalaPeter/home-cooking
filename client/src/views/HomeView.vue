@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
-import type { Recipe } from '@/types/Recipe'
+import type { RecipeShort } from '@/types/Recipe'
 import RecipeCard from '@/components/RecipeCard.vue'
 
-const recipes = ref<Recipe[]>([])
+const recipes = ref<RecipeShort[]>([])
 
 onMounted(() => {
 	getRecipes()
@@ -12,7 +12,7 @@ onMounted(() => {
 
 async function getRecipes() {
 	try {
-		const response = await axios.get<Recipe[]>('/api/recipes', {})
+		const response = await axios.get<RecipeShort[]>('/api/recipes', {})
 		console.log('response status is: ', response.status)
 		recipes.value = response.data
 	} catch (error) {

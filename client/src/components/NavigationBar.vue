@@ -22,11 +22,7 @@ async function searchRecipes() {
 
 <template>
 	<nav class="navbar">
-		<a class="navbar__logo" href="/">
-			<svg>
-				<use href="/main.svg#pot" />
-			</svg>
-		</a>
+		<a class="navbar__logo" href="/"> Home Cooking </a>
 		<div class="navbar__search">
 			<input
 				type="text"
@@ -43,19 +39,14 @@ async function searchRecipes() {
 .navbar {
 	background-color: var(--green-300);
 	display: flex;
+	justify-content: space-between;
 	margin-bottom: var(--xxl);
 	padding: var(--m);
 }
 
 .navbar__logo {
-	height: 48px;
-	width: 48px;
-
-	svg {
-		color: var(--text-secondary);
-		height: 48px;
-		width: 48px;
-	}
+	color: var(--text-secondary);
+	font-size: 32px;
 
 	&:hover {
 		cursor: pointer;

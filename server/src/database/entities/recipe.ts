@@ -20,6 +20,9 @@ export class Recipe {
 	name!: string;
 
 	@Column("varchar")
+	card_image!: string;
+
+	@Column("varchar")
 	image!: string;
 
 	@ManyToMany(() => Tag)

@@ -32,8 +32,8 @@ async function getRecipe() {
 <template>
 	<main>
 		<section class="recipe">
-			<h1 class="recipe__title">{{ recipe.name }}</h1>
 			<div class="recipe__head">
+				<h1 class="recipe__head__title">{{ recipe.name }}</h1>
 				<img :src="`/images/${recipe.image}`" alt="" />
 			</div>
 			<div class="recipe__body">
@@ -66,33 +66,53 @@ async function getRecipe() {
 .recipe {
 	display: flex;
 	flex-direction: column;
-	gap: var(--l);
+	gap: var(--xxl);
+	position: relative;
 }
 
-.recipe__title {
+.recipe__head__title {
+	background: linear-gradient(
+		to top,
+		hsla(97, 97%, 13%, 0) 0%,
+		hsla(97, 97%, 13%, 0.8) 10%,
+		hsla(97, 97%, 13%, 0.8) 70%,
+		hsla(198, 31%, 6%, 0.85) 100%
+	);
+	border-radius: 20px 20px 0 0;
+	color: var(--text-secondary);
 	font-weight: bold;
+	height: 48px;
+	padding: var(--l) 0;
+	position: absolute;
 	text-align: center;
+	top: 0;
+	width: 100%;
 }
 
 .recipe__head {
 	align-items: center;
+	border-radius: 20px;
 	display: flex;
 	gap: 32px;
 	justify-content: center;
+	overflow: hidden;
 
 	img {
-		border-radius: 20px;
-		max-height: 800px;
+		aspect-ratio: 16/9;
+		height: 800px;
+		object-fit: cover;
+		width: 1280px;
+		z-index: -1;
 	}
 }
 
 .recipe__body {
 	display: flex;
-	place-items: center;
 	margin-bottom: var(--xxl);
 }
 
 .recipe__body__ingredients {
+	margin: 0 auto;
 	width: 400px;
 
 	& li:not(:last-child) {
@@ -105,6 +125,7 @@ async function getRecipe() {
 }
 
 .recipe__body__steps {
+	margin: 0 auto;
 	width: 600px;
 
 	& li:not(:last-child) {
