@@ -39,14 +39,21 @@ async function searchRecipes() {
 .navbar {
 	background-color: var(--green-300);
 	display: flex;
+	flex-direction: column;
+	gap: var(--l);
 	justify-content: space-between;
 	margin-bottom: var(--xxl);
 	padding: var(--m);
+
+	@media only screen and (min-width: 756px) {
+		flex-direction: row;
+	}
 }
 
 .navbar__logo {
 	color: var(--text-secondary);
 	font-size: 32px;
+	text-align: center;
 
 	&:hover {
 		cursor: pointer;
@@ -54,6 +61,7 @@ async function searchRecipes() {
 }
 
 .navbar__search {
+	align-items: center;
 	display: flex;
 	margin: 0 auto;
 	max-width: 600px;

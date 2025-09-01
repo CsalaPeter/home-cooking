@@ -18,4 +18,9 @@
 
 	--text-primary: var(--black);
 	--text-secondary: var(--white);
+
+	--mobile: 576px;
+	--tablet: 768px;
+	--monitor: 1024px;
+	--large-monitor: 1200px;
 }

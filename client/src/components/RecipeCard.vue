@@ -32,11 +32,16 @@ const { recipe } = defineProps<{
 	box-shadow: 8px 8px 4px 6px rgba(0, 0, 0, 0.2);
 	display: flex;
 	flex-direction: column;
-	height: 500px;
+	height: 400px;
 	justify-content: end;
 	overflow: hidden;
 	position: relative;
-	width: 400px;
+	width: 300px;
+
+	@media only screen and (min-width: 1024px) {
+		height: 500px;
+		width: 400px;
+	}
 }
 
 .recipe-card__background {
@@ -72,7 +77,7 @@ const { recipe } = defineProps<{
 .recipe-card__content__tags {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--m);
+	gap: var(--s) var(--m);
 	height: fit-content;
 	justify-content: center;
 }

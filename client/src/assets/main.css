@@ -4,11 +4,6 @@
 	width: 100%;
 }
 
-section {
-	margin: 0 auto;
-	max-width: 1280px;
-}
-
 body {
 	background-color: var(--white);
 	color: var(--text-primary);
@@ -68,4 +63,9 @@ p {
 	body {
 		display: flex;
 	}
+}
+
+ul,
+ol {
+	padding: 0;
 }

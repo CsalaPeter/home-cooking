@@ -67,7 +67,9 @@ async function getRecipe() {
 	display: flex;
 	flex-direction: column;
 	gap: var(--xxl);
-	position: relative;
+	margin: 0 auto;
+	max-width: 1280px;
+	padding: var(--m);
 }
 
 .recipe__head__title {
@@ -81,7 +83,7 @@ async function getRecipe() {
 	border-radius: 20px 20px 0 0;
 	color: var(--text-secondary);
 	font-weight: bold;
-	height: 48px;
+	height: fit-content;
 	padding: var(--l) 0;
 	position: absolute;
 	text-align: center;
@@ -96,24 +98,43 @@ async function getRecipe() {
 	gap: 32px;
 	justify-content: center;
 	overflow: hidden;
+	position: relative;
 
 	img {
-		aspect-ratio: 16/9;
+		aspect-ratio: 4/3;
 		height: 800px;
 		object-fit: cover;
 		width: 1280px;
 		z-index: -1;
+
+		@media only screen and (min-width: 768px) {
+			aspect-ratio: 16/9;
+		}
 	}
 }
 
 .recipe__body {
 	display: flex;
-	margin-bottom: var(--xxl);
+	margin-bottom: var(--l);
+	flex-direction: column;
+	padding: 0 var(--l);
+	gap: var(--l);
+
+	@media only screen and (min-width: 768px) {
+		flex-direction: row;
+		margin-bottom: var(--xxl);
+	}
 }
 
 .recipe__body__ingredients {
+	columns: 2;
 	margin: 0 auto;
-	width: 400px;
+	width: 100%;
+
+	@media only screen and (min-width: 768px) {
+		columns: 1;
+		width: 33%;
+	}
 
 	& li:not(:last-child) {
 		margin-bottom: var(--m);
@@ -126,7 +147,11 @@ async function getRecipe() {
 
 .recipe__body__steps {
 	margin: 0 auto;
-	width: 600px;
+	width: 100%;
+
+	@media only screen and (min-width: 768px) {
+		width: 66%;
+	}
 
 	& li:not(:last-child) {
 		margin-bottom: var(--m);

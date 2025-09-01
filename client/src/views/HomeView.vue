@@ -34,8 +34,13 @@ async function getRecipes() {
 
 <style>
 .recipes {
-	width: 100%;
+	padding: var(--m);
+
+	@media only screen and (min-width: 768px) {
+		padding: var(--l);
+	}
 }
+
 .recipe-cards {
 	display: flex;
 	flex-wrap: wrap;
